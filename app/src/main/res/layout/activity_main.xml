@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingTop="8dp">
+
+    <Button
+        android:id="@+id/btn_left"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="从左侧弹出"/>
+    <Button
+        android:id="@+id/btn_right"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="从右侧弹出"/>
+    <Button
+        android:id="@+id/btn_center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="从中心弹出"/>
+    <Button
+        android:id="@+id/btn_top"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="从顶部弹出"/>
+    <Button
+        android:id="@+id/btn_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="从底部弹出"/>
+    <Button
+        android:id="@+id/btn_bottom_menu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="复杂布局（底部菜单）"/>
+    <CheckBox
+        android:id="@+id/checkbox_radius"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:checked="true"
+        android:text="是否使用圆角特性"/>
+
+</LinearLayout>

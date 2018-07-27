@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- ActionBar background -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <!-- StatusBar background 5.0+-->
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <!-- RadioButton\CheckBox\EditText -->
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+</resources>

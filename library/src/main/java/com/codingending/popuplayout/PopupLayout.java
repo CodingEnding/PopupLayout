@@ -92,6 +92,32 @@ public class PopupLayout {
     }
 
     /**
+     * 设置弹出布局的高度
+     * @param height 高度
+     * @param dpMode 是否以dp为单位
+     */
+    public void setHeight(int height,boolean dpMode){
+        if(dpMode){
+            mPopupDialog.setWindowHeight(dp2Px(mPopupDialog.getContext(),height));
+        }else{
+            mPopupDialog.setWindowHeight(height);
+        }
+    }
+
+    /**
+     * 设置弹出布局的宽度
+     * @param width 宽度
+     * @param dpMode 是否以dp为单位
+     */
+    public void setWidth(int width,boolean dpMode){
+        if(dpMode){
+            mPopupDialog.setWindowWidth(dp2Px(mPopupDialog.getContext(),width));
+        }else{
+            mPopupDialog.setWindowWidth(width);
+        }
+    }
+
+    /**
      * 隐藏对话框
      */
     public void hide(){
@@ -112,6 +138,16 @@ public class PopupLayout {
     //监听弹出窗口消失事件的监听器
     public interface DismissListener{
         void onDismiss();
+    }
+
+    /**
+     * dp转px
+     */
+    private static int dp2Px(Context context,int dp) {
+        if (context == null) {
+            return 0;
+        }
+        return (int)(dp * context.getResources().getDisplayMetrics().density);
     }
 
 }

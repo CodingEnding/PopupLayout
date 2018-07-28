@@ -21,6 +21,8 @@ public class PopupDialog extends Dialog{
     private View mContentLayout;//弹出窗体的内容布局
     private int mGravity=Gravity.BOTTOM;//窗体的弹出位置
     private boolean mUseRadius =true;//是否使用圆角效果
+    private int mWindowWidth=-1;//窗体宽度(px)，-1代表外界并未设置，直接使用默认设置
+    private int mWindowHeight=-1;//窗体高度(px)
 
     public PopupDialog(@NonNull Context context) {
         super(context);
@@ -62,6 +64,16 @@ public class PopupDialog extends Dialog{
     }
 
 
+    //设置窗体宽度(px)
+    protected void setWindowWidth(int width){
+        this.mWindowWidth=width;
+    }
+
+    //设置窗体高度(px)
+    protected void setWindowHeight(int height){
+        this.mWindowHeight=height;
+    }
+
     /**
      * 生成窗体配置
      */
@@ -69,22 +81,43 @@ public class PopupDialog extends Dialog{
         Window window=getWindow();
         if(window!=null){
             WindowManager.LayoutParams params=window.getAttributes();
-            configWindowBackground(window);//配置窗体背景
             params.gravity= mGravity;
-            //设置窗体大小
-            if(mGravity==Gravity.LEFT||mGravity==Gravity.RIGHT){
-                params.width= WindowManager.LayoutParams.WRAP_CONTENT;
-                params.height=WindowManager.LayoutParams.MATCH_PARENT;
-            }else if(mGravity==Gravity.TOP||mGravity==Gravity.BOTTOM){
-                params.width= WindowManager.LayoutParams.MATCH_PARENT;
-                params.height=WindowManager.LayoutParams.WRAP_CONTENT;
-            }else{
-                params.width= WindowManager.LayoutParams.WRAP_CONTENT;
-                params.height=WindowManager.LayoutParams.WRAP_CONTENT;
-            }
-            window.setAttributes(params);
+            configWindowBackground(window);//配置窗体背景
+            configWindowLayoutParams(window,params);//设置窗体布局参数
             configWindowAnimations(window);//配置动画效果
         }
+    }
+
+    //配置窗体布局参数
+    private void configWindowLayoutParams(Window window,WindowManager.LayoutParams params){
+        params.gravity= mGravity;
+        if(mGravity==Gravity.LEFT||mGravity==Gravity.RIGHT){
+            params.width= getWidthParams(WindowManager.LayoutParams.WRAP_CONTENT);
+            params.height=getHeightParams(WindowManager.LayoutParams.MATCH_PARENT);
+        }else if(mGravity==Gravity.TOP||mGravity==Gravity.BOTTOM){
+            params.width= getWidthParams(WindowManager.LayoutParams.MATCH_PARENT);
+            params.height=getHeightParams(WindowManager.LayoutParams.WRAP_CONTENT);
+        }else{
+            params.width= getWidthParams(WindowManager.LayoutParams.WRAP_CONTENT);
+            params.height=getHeightParams(WindowManager.LayoutParams.WRAP_CONTENT);
+        }
+        window.setAttributes(params);
+    }
+
+    //获取宽度布局参数（取决于外界是否设置了宽度）
+    private int getWidthParams(int defaultParams){
+        if(mWindowWidth>=0){//此时宽度已被赋值
+            return mWindowWidth;
+        }
+        return defaultParams;
+    }
+
+    //获取高度布局参数（取决于外界是否设置了高度）
+    private int getHeightParams(int defaultParams){
+        if(mWindowHeight>=0){//此时高度已被赋值
+            return mWindowHeight;
+        }
+        return defaultParams;
     }
 
     //配置动画效果

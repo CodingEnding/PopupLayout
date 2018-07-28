@@ -9,18 +9,18 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAllCaps="false"
-        android:text="Item1"/>
+        android:text="Menu1"/>
     <Button
         android:id="@+id/menu_2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAllCaps="false"
-        android:text="Item2"/>
+        android:text="Menu2"/>
     <Button
         android:id="@+id/menu_3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAllCaps="false"
-        android:text="Item3"/>
+        android:text="Menu3"/>
 
 </LinearLayout>

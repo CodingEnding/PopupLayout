@@ -36,6 +36,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="复杂布局（底部菜单）"/>
+    <Button
+        android:id="@+id/btn_bottom_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="复杂布局（长列表）"/>
     <CheckBox
         android:id="@+id/checkbox_radius"
         android:layout_width="wrap_content"

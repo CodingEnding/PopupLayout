@@ -10,7 +10,7 @@ PopupLayout是通用弹出布局辅助库，允许开发者从顶部、底部、
 
 ![](https://i.imgur.com/RPNMvX6.jpg)
 
-![](https://i.imgur.com/0RF1uU0.gif)
+![image](https://github.com/CodingEnding/PopupLayout/blob/master/ScreenShot/popupLayout_demo.gif)
 
 ## Gradle
 
@@ -77,7 +77,7 @@ public void dismiss()
 public void hide()
 ```
 
-**注意，**在Activity退出时必须使用dismiss方法销毁弹出布局，释放资源。
+**注意**：在Activity退出时必须使用dismiss方法销毁弹出布局，释放资源。
 
 ### 限制弹出布局的大小
 
@@ -101,7 +101,7 @@ public void setHeight(int height,boolean dpMode)
 public void setWidth(int width,boolean dpMode)
 ```
 
-**注意，**这两个方法必须要在调用show方法之前使用才有效。
+**注意**：这两个方法必须要在调用show方法之前使用才有效。
 
 ### 相关方法
 

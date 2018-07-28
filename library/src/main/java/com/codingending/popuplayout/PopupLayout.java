@@ -75,7 +75,7 @@ public class PopupLayout {
      * 默认从底部弹出
      */
     public void show(){
-        show(POSITION_LEFT);
+        show(POSITION_BOTTOM);
     }
 
     /**

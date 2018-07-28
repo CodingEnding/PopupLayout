@@ -1,6 +1,7 @@
 package com.codingending.popuplayout;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.support.annotation.LayoutRes;
 import android.util.Log;
 import android.view.Gravity;
@@ -12,7 +13,8 @@ import android.view.View;
  */
 public class PopupLayout {
     private static final String TAG="PopupLayout";
-    private static PopupDialog mPopupDialog;//使用到的对话框
+    private PopupDialog mPopupDialog;//内部使用的Dialog
+    private DismissListener mDismissListener;//监听弹出窗口的消失事件
 
     public static int POSITION_LEFT=Gravity.LEFT;//从最左侧弹出
     public static int POSITION_RIGHT=Gravity.RIGHT;//右侧
@@ -27,9 +29,12 @@ public class PopupLayout {
      * @param context
      * @param contentLayoutId 内容布局Id
      */
-    public static void init(Context context,@LayoutRes int contentLayoutId){
-        mPopupDialog=new PopupDialog(context);
-        mPopupDialog.setContentLayout(contentLayoutId);
+    public static PopupLayout init(Context context,@LayoutRes int contentLayoutId){
+        PopupLayout popupLayout=new PopupLayout();
+        popupLayout.mPopupDialog=new PopupDialog(context);
+        popupLayout.mPopupDialog.setContentLayout(contentLayoutId);
+        popupLayout.initListener();
+        return popupLayout;
     }
 
     /**
@@ -37,22 +42,39 @@ public class PopupLayout {
      * @param context
      * @param contentView 内容布局
      */
-    public static void init(Context context,View contentView){
-        mPopupDialog=new PopupDialog(context);
-        mPopupDialog.setContentLayout(contentView);
+    public static PopupLayout init(Context context,View contentView){
+        PopupLayout popupLayout=new PopupLayout();
+        popupLayout.mPopupDialog=new PopupDialog(context);
+        popupLayout.mPopupDialog.setContentLayout(contentView);
+        popupLayout.initListener();
+        return popupLayout;
+    }
+
+    //初始化Dialog监听器
+    private void initListener(){
+        mPopupDialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
+            @Override
+            public void onDismiss(DialogInterface dialog) {
+                if(mDismissListener!=null){
+                    mDismissListener.onDismiss();
+                }
+            }
+        });
     }
 
     /**
      * 设置是否使用圆角特性
      */
-    public static void setUseRadius(boolean useRadius){
-        mPopupDialog.setUseRadius(useRadius);
+    public void setUseRadius(boolean useRadius){
+        if(mPopupDialog!=null){
+            mPopupDialog.setUseRadius(useRadius);
+        }
     }
 
     /**
      * 默认从底部弹出
      */
-    public static void show(){
+    public void show(){
         show(POSITION_LEFT);
     }
 
@@ -60,7 +82,7 @@ public class PopupLayout {
      * 从指定位置弹出/显示
      * @param position 指定位置
      */
-    public static void show(int position){
+    public void show(int position){
         if(mPopupDialog==null){
             Log.e(TAG,"Dialog init error,it's null");
             return;
@@ -72,10 +94,24 @@ public class PopupLayout {
     /**
      * 隐藏对话框
      */
-    public static void hide(){
+    public void hide(){
         if(mPopupDialog!=null){
             mPopupDialog.hide();
         }
+
+    }
+
+    /**
+     * 设置弹出布局消失的监听器
+     * @param dismissListener 监听器
+     */
+    public void setDismissListener(DismissListener dismissListener){
+        this.mDismissListener=dismissListener;
+    }
+
+    //监听弹出窗口消失事件的监听器
+    public interface DismissListener{
+        void onDismiss();
     }
 
 }

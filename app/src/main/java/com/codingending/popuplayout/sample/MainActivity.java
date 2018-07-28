@@ -25,41 +25,47 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.btn_left).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                PopupLayout.init(MainActivity.this, R.layout.layout_left);
-                PopupLayout.setUseRadius(useRadius);
-                PopupLayout.show(PopupLayout.POSITION_LEFT);
+                PopupLayout popupLayout=PopupLayout.init(MainActivity.this, R.layout.layout_left);
+                popupLayout.setUseRadius(useRadius);
+                popupLayout.show(PopupLayout.POSITION_LEFT);
             }
         });
         findViewById(R.id.btn_right).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                PopupLayout.init(MainActivity.this, R.layout.layout_right);
-                PopupLayout.setUseRadius(useRadius);
-                PopupLayout.show(PopupLayout.POSITION_RIGHT);
+                PopupLayout popupLayout=PopupLayout.init(MainActivity.this, R.layout.layout_right);
+                popupLayout.setUseRadius(useRadius);
+                popupLayout.show(PopupLayout.POSITION_RIGHT);
             }
         });
         findViewById(R.id.btn_top).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                PopupLayout.init(MainActivity.this, R.layout.layout_top);
-                PopupLayout.setUseRadius(useRadius);
-                PopupLayout.show(PopupLayout.POSITION_TOP);
+                PopupLayout popupLayout=PopupLayout.init(MainActivity.this, R.layout.layout_top);
+                popupLayout.setUseRadius(useRadius);
+                popupLayout.show(PopupLayout.POSITION_TOP);
             }
         });
         findViewById(R.id.btn_bottom).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                PopupLayout.init(MainActivity.this, R.layout.layout_bottom);
-                PopupLayout.setUseRadius(useRadius);
-                PopupLayout.show(PopupLayout.POSITION_BOTTOM);
+                PopupLayout popupLayout=PopupLayout.init(MainActivity.this, R.layout.layout_bottom);
+                popupLayout.setUseRadius(useRadius);
+                popupLayout.setDismissListener(new PopupLayout.DismissListener() {
+                    @Override
+                    public void onDismiss() {
+                        Toast.makeText(MainActivity.this,"弹出窗口关闭",Toast.LENGTH_SHORT).show();
+                    }
+                });
+                popupLayout.show(PopupLayout.POSITION_BOTTOM);
             }
         });
         findViewById(R.id.btn_center).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                PopupLayout.init(MainActivity.this,R.layout.layout_center);
-                PopupLayout.setUseRadius(useRadius);
-                PopupLayout.show(PopupLayout.POSITION_CENTER);
+                PopupLayout popupLayout=PopupLayout.init(MainActivity.this,R.layout.layout_center);
+                popupLayout.setUseRadius(useRadius);
+                popupLayout.show(PopupLayout.POSITION_CENTER);
             }
         });
         ((CheckBox)findViewById(R.id.checkbox_radius)).setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -72,16 +78,16 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 View parent=View.inflate(MainActivity.this,R.layout.layout_bottom_menu,null);
+                final PopupLayout popupLayout=PopupLayout.init(MainActivity.this,parent);
                 parent.findViewById(R.id.menu_1).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         Toast.makeText(MainActivity.this,"Item1",Toast.LENGTH_SHORT).show();
-                        PopupLayout.hide();
+                        popupLayout.hide();//让弹出布局中的按钮关闭弹出窗口
                     }
                 });
-                PopupLayout.init(MainActivity.this,parent);
-                PopupLayout.setUseRadius(useRadius);
-                PopupLayout.show(PopupLayout.POSITION_BOTTOM);
+                popupLayout.setUseRadius(useRadius);
+                popupLayout.show(PopupLayout.POSITION_BOTTOM);
             }
         });
     }

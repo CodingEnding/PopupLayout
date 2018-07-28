@@ -1,12 +1,20 @@
 # PopupLayout
 
+[![License](https://img.shields.io/badge/License%20-Apache%202-337ab7.svg)](https://www.apache.org/licenses/LICENSE-2.0)
+[![](https://jitpack.io/v/CodingEnding/PopupLayout.svg)](https://jitpack.io/#CodingEnding/PopupLayout)
+[![MinSdk](https://img.shields.io/badge/MinSDK-14%2B-brightgreen.svg?style=flat)](https://android-arsenal.com/api?level=14)
 
 PopupLayout是通用弹出布局辅助库，允许开发者从顶部、底部、左侧、右侧和中心这五个位置弹出自己指定的布局。
 
 ## 效果预览
 
+![](https://i.imgur.com/RPNMvX6.jpg)
+
+![](https://i.imgur.com/0RF1uU0.gif)
 
 ## Gradle
+
+[![](https://jitpack.io/v/CodingEnding/PopupLayout.svg)](https://jitpack.io/#CodingEnding/PopupLayout)
 
 ```
 //根项目下的build.gradle
@@ -18,7 +26,7 @@ allprojects {
 
 //主项目下的build.gradle
 dependencies {
-    
+    implementation 'com.github.CodingEnding:PopupLayout:v1.0'
 }
 ```
 
@@ -34,7 +42,7 @@ PopLayout的使用非常简单，只需要执行以下两步：
 
 ```
 //1.使用layout资源Id作为弹出布局的内容
-PopupLayout popupLayout=PopupLayout.init(MainActivity.this, R.layout.layout_left);//这里
+PopupLayout popupLayout=PopupLayout.init(MainActivity.this, R.layout.layout_left);
 
 //2.使用View作为弹出布局的内容
 View view=View.inflate(MainActivity.this,R.layout.layout_bottom_menu,null);
@@ -63,6 +71,11 @@ position的可选值：
 ### 关闭弹出布局
 
 点击弹出布局之外的区域，PopupLayout会被自动关闭。当然，也可以通过调用dismiss或hide方法手动关闭。这两个方法的区别在于hide只是隐藏弹出布局，并不会释放资源；而dismiss会销毁弹出布局并释放资源。通常情况下，建议使用dismiss方法。
+
+```
+public void dismiss()
+public void hide()
+```
 
 **注意，**在Activity退出时必须使用dismiss方法销毁弹出布局，释放资源。
 

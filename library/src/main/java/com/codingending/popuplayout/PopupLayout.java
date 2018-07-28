@@ -118,11 +118,23 @@ public class PopupLayout {
     }
 
     /**
-     * 隐藏对话框
+     * 隐藏弹出布局（不会销毁弹出布局），不会触发DismissListener
+     * 建议使用dismiss()方法
      */
     public void hide(){
         if(mPopupDialog!=null){
             mPopupDialog.hide();
+        }
+
+    }
+
+    /**
+     * 隐藏弹出布局（同时会销毁弹出布局，释放资源），建议使用
+     * 注意，在Activity退出时必须使用该方法销毁弹出布局，释放资源
+     */
+    public void dismiss(){
+        if(mPopupDialog!=null){
+            mPopupDialog.dismiss();
         }
 
     }

@@ -4,7 +4,7 @@
 [![](https://jitpack.io/v/CodingEnding/PopupLayout.svg)](https://jitpack.io/#CodingEnding/PopupLayout)
 [![MinSdk](https://img.shields.io/badge/MinSDK-14%2B-brightgreen.svg?style=flat)](https://android-arsenal.com/api?level=14)
 
-PopupLayout是通用弹出布局辅助库，允许开发者从顶部、底部、左侧、右侧和中心这五个位置弹出自己指定的布局。
+PopupLayout是通用弹出布局辅助库，允许开发者从顶部、底部、左侧、右侧和中心这五个位置弹出自己指定的View，此外还提供圆角和动画特性。
 
 ## 效果预览
 

@@ -36,9 +36,9 @@ dependencies {
 
 PopLayout的使用非常简单，只需要执行以下两步：
 
-**1.初始化PopLayout**
+**1.初始化PopupLayout**
 
-通过调用静态方法init初始化PopLayout。这个方法有两个参数：第一个参数是Context对象，第二个参数代表弹出布局的内容，可以将layout资源Id或者View对象作为参数传入，如下所示：
+通过调用静态方法init初始化PopupLayout。这个方法有两个参数：第一个参数是Context对象，第二个参数代表弹出布局的内容，可以将layout资源Id或者View对象作为参数传入，如下所示：
 
 ```
 //1.使用layout资源Id作为弹出布局的内容
